@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Digital clock</title>
+	
+<style type="text/css">
+	
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}	
+
+body{
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background:  #ff7f50;
+
+}
+
+.Digital {
+		width: 300px;
+		padding: 20px 0px;
+		
+		position: absolute;
+		margin: 0px auto;
+		
+		border: 6px solid;
+		border-color: black;		
+		font-size: 25px;
+        font-weight: bold;
+        text-align: right;
+		
+		background: #00ff00;
+		text-align: center;
+		
+		border-radius: 30px;
+	     }
+
+</style>
+</head>
+
+<body>
+	
+ <div class="Digital">
+ 	<div class="Numbers">
+ 		<div id="#timezone"> 12:00:00 PM</div>
+ 	</div>
+</div>
+
+
+<script type="text/javascript">
+
+setInterval(Digital,1000);
+
+	function Digital() {
+     let t = new Date();
+    var hours = t.getHours();
+    var minutes = t.getMinutes();
+    var seconds = t.getSeconds();
+    var period = "AM";
+
+
+    if (hours == '0')
+    {
+        hours = 12;
+    }
+    if (hours > 12) {
+        hours -= 12;
+        period = 'PM';
+    }
+
+    hours = hours <10 ? `0${hours}` : hours;
+    minutes = minutes <10 ? `0${minutes}` : minutes;
+    seconds = seconds <10 ? `0${seconds}` : seconds;
+    
+    const time = `${hours} : ${minutes} : ${seconds}  ${period}`;
+    document.getElementById('#timezone').innerHTML = time;
+
+}
+
+Digital();
+
+</script>
+
+</body>
+</html>
